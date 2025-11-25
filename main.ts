@@ -8,7 +8,7 @@ scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sp
     tiles.setCurrentTilemap(tilemap`level2`)
     tiles.placeOnRandomTile(Hero, sprites.dungeon.doorClosedWest)
     scene.cameraFollowSprite(Hero)
-    info.startCountdown(60)
+    info.startCountdown(40)
 })
 let Hero: Sprite = null
 Hero = sprites.create(img`
@@ -33,7 +33,4 @@ controller.moveSprite(Hero)
 tiles.setCurrentTilemap(tilemap`level1`)
 tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
 scene.cameraFollowSprite(Hero)
-info.startCountdown(20)
-game.onUpdate(function () {
-	
-})
+info.startCountdown(60)
