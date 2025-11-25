@@ -1,7 +1,17 @@
-scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
-    game.gameOver(true)
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level3`)
+    tiles.placeOnRandomTile(Hero, sprites.dungeon.doorClosedWest)
+    scene.cameraFollowSprite(Hero)
+    info.startCountdown(60)
 })
-let Hero = sprites.create(img`
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
+    tiles.setCurrentTilemap(tilemap`level2`)
+    tiles.placeOnRandomTile(Hero, sprites.dungeon.doorClosedWest)
+    scene.cameraFollowSprite(Hero)
+    info.startCountdown(60)
+})
+let Hero: Sprite = null
+Hero = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -23,4 +33,7 @@ controller.moveSprite(Hero)
 tiles.setCurrentTilemap(tilemap`level1`)
 tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
 scene.cameraFollowSprite(Hero)
-info.startCountdown(60)
+info.startCountdown(20)
+game.onUpdate(function () {
+	
+})
