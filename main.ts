@@ -1,18 +1,17 @@
-scene.onOverlapTile(SpriteKind.Player, assets.tile`transparency16`, function (sprite, location) {
+scene.onOverlapTile(SpriteKind.Player, sprites.dungeon.chestClosed, function (sprite, location) {
     game.gameOver(true)
 })
-let Hero: Sprite = null
-let mySprite = sprites.create(img`
+let Hero = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
-    . . . . . . . . . . . . . . . . 
+    . . . . . 3 3 3 3 3 3 . . . . . 
+    . . . . 3 3 3 3 3 3 3 3 . . . . 
+    . . . . 3 3 3 3 3 3 3 3 . . . . 
+    . . . . 3 3 3 3 3 3 3 3 . . . . 
+    . . . . . 3 3 3 3 3 3 . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
     . . . . . . . . . . . . . . . . 
@@ -22,5 +21,6 @@ let mySprite = sprites.create(img`
     `, SpriteKind.Player)
 controller.moveSprite(Hero)
 tiles.setCurrentTilemap(tilemap`level1`)
+tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
 scene.cameraFollowSprite(Hero)
 info.startCountdown(60)
