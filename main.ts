@@ -3,12 +3,14 @@ namespace SpriteKind {
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     sprites.destroy(Obstacle_1)
+    info.changeScoreBy(1)
     tiles.setCurrentTilemap(tilemap`level2`)
     tiles.placeOnRandomTile(Hero, sprites.dungeon.doorClosedWest)
     scene.cameraFollowSprite(Hero)
     info.startCountdown(40)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    info.changeScoreBy(1)
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnRandomTile(Hero, sprites.dungeon.doorLockedSouth)
     scene.cameraFollowSprite(Hero)
@@ -20,6 +22,7 @@ scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, l
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Lava, function (sprite, otherSprite) {
     tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
     music.wawawawaa.play()
+    info.changeScoreBy(-1)
 })
 let Obstacle_1: Sprite = null
 let Hero: Sprite = null
@@ -66,3 +69,4 @@ tiles.setCurrentTilemap(tilemap`level1`)
 tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
 scene.cameraFollowSprite(Hero)
 info.startCountdown(60)
+info.setScore(0)
