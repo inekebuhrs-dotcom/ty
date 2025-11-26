@@ -26,7 +26,6 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Lava, function (sprite, otherSpr
 })
 let Obstacle_1: Sprite = null
 let Hero: Sprite = null
-color.setColor(13, color.rgb(255, 255, 255))
 Hero = sprites.create(img`
     . . . 8 8 8 8 8 8 8 . . . . . . 
     . . 8 . . 8 d 8 8 8 8 8 . . . . 
