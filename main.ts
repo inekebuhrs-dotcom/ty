@@ -3,26 +3,48 @@ namespace SpriteKind {
 }
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile0`, function (sprite, location) {
     sprites.destroy(Obstacle_1)
+    music.stopAllSounds()
     info.changeScoreBy(1)
     tiles.setCurrentTilemap(tilemap`level2`)
     tiles.placeOnRandomTile(Hero, sprites.dungeon.doorClosedWest)
     scene.cameraFollowSprite(Hero)
     info.startCountdown(40)
+    music.play(music.stringPlayable("A C5 A B C5 B A B ", 120), music.PlaybackMode.LoopingInBackground)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile`, function (sprite, location) {
+    music.stopAllSounds()
     info.changeScoreBy(1)
     tiles.setCurrentTilemap(tilemap`level3`)
     tiles.placeOnRandomTile(Hero, sprites.dungeon.doorLockedSouth)
     scene.cameraFollowSprite(Hero)
     info.startCountdown(30)
+    music.play(music.stringPlayable("E G C5 G B G A F ", 120), music.PlaybackMode.UntilDone)
 })
 scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile4`, function (sprite, location) {
-	
+    music.stopAllSounds()
+    info.changeScoreBy(1)
+    tiles.setCurrentTilemap(tilemap`level4`)
+    tiles.placeOnRandomTile(Hero, sprites.dungeon.doorOpenNorth)
+    scene.cameraFollowSprite(Hero)
+    info.startCountdown(20)
+    music.play(music.stringPlayable("C D F E C D F E ", 120), music.PlaybackMode.UntilDone)
 })
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Lava, function (sprite, otherSprite) {
     tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
     music.wawawawaa.play()
     info.changeScoreBy(-1)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile9`, function (sprite, location) {
+    music.stopAllSounds()
+    info.changeScoreBy(1)
+    tiles.setCurrentTilemap(tilemap`level5`)
+    tiles.placeOnRandomTile(Hero, sprites.dungeon.doorLockedWest)
+    scene.cameraFollowSprite(Hero)
+    music.play(music.stringPlayable("C5 B A B C5 B A B ", 150), music.PlaybackMode.UntilDone)
+})
+scene.onOverlapTile(SpriteKind.Player, assets.tile`myTile11`, function (sprite, location) {
+    music.stopAllSounds()
+    game.gameOver(true)
 })
 let Obstacle_1: Sprite = null
 let Hero: Sprite = null
@@ -69,3 +91,4 @@ tiles.placeOnRandomTile(Hero, sprites.dungeon.stairEast)
 scene.cameraFollowSprite(Hero)
 info.startCountdown(60)
 info.setScore(0)
+music.play(music.stringPlayable("E D G F B A C5 B ", 120), music.PlaybackMode.LoopingInBackground)
